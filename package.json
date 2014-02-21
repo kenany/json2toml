@@ -26,7 +26,7 @@
     "lodash.isempty": "^2.4.1",
     "lodash.isplainobject": "^2.4.1",
     "lodash.keys": "^2.4.1",
-    "strftime": "^0.7.0"
+    "strftime": "^0.8.0"
   },
   "devDependencies": {
     "tape": "^2.1.0"
