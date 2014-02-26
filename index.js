@@ -24,7 +24,7 @@ module.exports = function(hash) {
     });
 
     if (!(isEmpty(prefix) || isEmpty(simplePairs))) {
-      toml += '[' + prefix + ']\n'
+      toml += '[' + prefix + ']\n';
     }
 
     forEach(simplePairs, function(array) {
