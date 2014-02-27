@@ -44,7 +44,7 @@ module.exports = function(hash) {
 
   var toml = '';
 
-  visit(hash, '')
+  visit(hash, '');
 
   return toml;
 };
