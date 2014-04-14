@@ -18,9 +18,7 @@ module.exports = function(hash) {
 
     forEach(keys(hash).sort(), function(key) {
       var value = hash[key];
-      isPlainObject(value)
-        ? nestedPairs.push([key, value])
-        : simplePairs.push([key, value]);
+      (isPlainObject(value) ? nestedPairs : simplePairs).push([key, value]);
     });
 
     if (!(isEmpty(prefix) || isEmpty(simplePairs))) {
