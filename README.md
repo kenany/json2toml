@@ -1,6 +1,6 @@
 # json2toml
 
-[![Build Status](https://travis-ci.org/KenanY/json2toml.png?branch=master)](https://travis-ci.org/KenanY/json2toml)
+[![Build Status](https://travis-ci.org/KenanY/json2toml.svg?branch=master)](https://travis-ci.org/KenanY/json2toml)
 [![Dependency Status](https://gemnasium.com/KenanY/json2toml.png)](https://gemnasium.com/KenanY/json2toml)
 
 
