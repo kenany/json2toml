@@ -1,7 +1,4 @@
 language: node_js
-env:
-  - NODE_VERSION="0.8"
-  - NODE_VERSION="0.10"
 node_js:
   - "0.10"
 git:
@@ -10,12 +7,5 @@ branches:
   only:
     - master
 before_install:
-  - rm -rf ~/.nvm
-  - curl https://raw.github.com/creationix/nvm/master/install.sh | sh
-  - source ~/.nvm/nvm.sh
-  - nvm install $NODE_VERSION
-  - node --version
-  - npm cache clean
-  - "[ $NODE_VERSION != '0.8' ] || npm install -g npm@1.1.70"
   - npm install -g npm
   - npm --version
