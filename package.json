@@ -1,6 +1,6 @@
 {
   "name": "json2toml",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "JSON to TOML converter",
   "keywords": [
     "json",
