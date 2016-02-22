@@ -21,7 +21,7 @@
     "test": "tape test/index.js"
   },
   "dependencies": {
-    "lodash.foreach": "^3.0.1",
+    "lodash.foreach": "^4.1.0",
     "lodash.isdate": "^3.0.0",
     "lodash.isempty": "^3.0.0",
     "lodash.isplainobject": "^3.0.0",
