@@ -17,6 +17,9 @@
   "directories": {
     "test": "test"
   },
+  "engines": {
+    "node": "6 || 8 || 10 || 12 || >=14"
+  },
   "scripts": {
     "test": "tape test/index.js"
   },
