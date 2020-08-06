@@ -22,6 +22,7 @@
   },
   "scripts": {
     "lint": "eslint .",
+    "release": "semantic-release",
     "test": "tape test/index.js"
   },
   "dependencies": {
@@ -35,7 +36,11 @@
   "devDependencies": {
     "@kenan/eslint-config": "^8.0.0",
     "@kenan/renovate-config": "^1.4.0",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "conventional-changelog-conventionalcommits": "^4.3.0",
     "eslint": "^7.6.0",
+    "semantic-release": "^17.1.1",
     "tape": "^4.13.3"
   }
 }
