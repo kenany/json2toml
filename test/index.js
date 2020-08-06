@@ -1,5 +1,5 @@
-var json2toml = require('../');
 var test = require('tape');
+var json2toml = require('../');
 
 test('empty', function(t) {
   t.plan(1);
@@ -8,15 +8,15 @@ test('empty', function(t) {
 
 test('types', function(t) {
   var TESTS = [
-    [{simple: true}, 'simple = true\n'],
-    [{'float': -13.24}, 'float = -13.24\n'],
-    [{'int': 1234}, 'int = 1234\n'],
-    [{'true': true}, 'true = true\n'],
-    [{'false': false}, 'false = false\n'],
-    [{array: [1, 2, 3]}, 'array = [1,2,3]\n'],
+    [{ simple: true }, 'simple = true\n'],
+    [{ float: -13.24 }, 'float = -13.24\n'],
+    [{ int: 1234 }, 'int = 1234\n'],
+    [{ true: true }, 'true = true\n'],
+    [{ false: false }, 'false = false\n'],
+    [{ array: [1, 2, 3] }, 'array = [1,2,3]\n'],
     [
-      {array: [[1, 2], ['weird', 'one']]},
-      'array = [[1,2],[\"weird\",\"one\"]]\n'
+      { array: [[1, 2], ['weird', 'one']] },
+      'array = [[1,2],["weird","one"]]\n'
     ],
     [{
       datetime: new Date(1986, 7, 28, 15, 15)
@@ -33,7 +33,7 @@ test('types', function(t) {
 test('nested', function(t) {
   t.plan(3);
 
-  var hash = {nested: {hash: { deep: true}}};
+  var hash = { nested: { hash: { deep: true } } };
   t.equal(json2toml(hash), '[nested.hash]\ndeep = true\n');
 
   hash.nested.other = 12;
@@ -41,11 +41,11 @@ test('nested', function(t) {
 
   hash.nested.nest = {};
   hash.nested.nest.again = 'it never ends';
-  var toml = '[nested]\n' +
-             'other = 12\n' +
-             '[nested.hash]\n' +
-             'deep = true\n' +
-             '[nested.nest]\n' +
-             'again = \"it never ends\"\n';
+  var toml = '[nested]\n'
+             + 'other = 12\n'
+             + '[nested.hash]\n'
+             + 'deep = true\n'
+             + '[nested.nest]\n'
+             + 'again = "it never ends"\n';
   t.equal(json2toml(hash), toml);
 });
