@@ -33,6 +33,6 @@
   },
   "devDependencies": {
     "@kenan/renovate-config": "^1.4.0",
-    "tape": "^4.4.0"
+    "tape": "^4.13.3"
   }
 }
