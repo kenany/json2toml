@@ -29,7 +29,7 @@
     "lodash.foreach": "^4.5.0",
     "lodash.isdate": "^4.0.1",
     "lodash.isempty": "^4.4.0",
-    "lodash.isplainobject": "^4.0.2",
+    "lodash.isplainobject": "^4.0.6",
     "lodash.keys": "^4.0.3",
     "strftime": "^0.10.0"
   },
