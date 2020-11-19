@@ -11,10 +11,12 @@ function format(obj) {
     : JSON.stringify(obj);
 }
 
-module.exports = function(hash) {
+module.exports = function(hash, options={}) {
   function visit(hash, prefix) {
     var nestedPairs = [];
     var simplePairs = [];
+
+    var indentStr = "";
 
     forEach(keys(hash).sort(), function(key) {
       var value = hash[key];
@@ -23,14 +25,19 @@ module.exports = function(hash) {
 
     if (!(isEmpty(prefix) || isEmpty(simplePairs))) {
       toml += '[' + prefix + ']\n';
+      indentStr = "".padStart(options.indent, " ");
     }
 
     forEach(simplePairs, function(array) {
       var key = array[0];
       var value = array[1];
 
-      toml += key + ' = ' + format(value) + '\n';
+      toml += indentStr + key + ' = ' + format(value) + '\n';
     });
+
+    if (!isEmpty(simplePairs) && options.newlineAfterSection) {
+      toml += '\n';
+    }
 
     forEach(nestedPairs, function(array) {
       var key = array[0];

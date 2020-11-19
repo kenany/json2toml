@@ -9,6 +9,16 @@ var json2toml = require('json2toml');
 
 json2toml({simple: true});
 // => 'simple = true\n'
+
+// Also supports pretty-printing options
+
+console.log(json2toml({deeply: {option: false, nested: {option: true}}},
+  {indent: 2, newlineAfterSection: true}));
+//[deeply]
+//  option = false
+//
+//[deeply.nested]
+//  option = true
 ```
 
 ## Installation
