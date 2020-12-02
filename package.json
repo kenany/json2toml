@@ -23,7 +23,7 @@
   "scripts": {
     "lint": "eslint .",
     "release": "semantic-release",
-    "test": "tape test/index.js"
+    "test": "nyc --reporter html --reporter text tape test/index.js"
   },
   "dependencies": {
     "lodash.foreach": "^4.5.0",
@@ -40,6 +40,7 @@
     "@semantic-release/git": "^9.0.0",
     "conventional-changelog-conventionalcommits": "^4.4.0",
     "eslint": "^7.14.0",
+    "nyc": "^15.1.0",
     "semantic-release": "^17.1.2",
     "tape": "^5.0.1"
   }
