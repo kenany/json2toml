@@ -11,12 +11,12 @@ function format(obj) {
     : JSON.stringify(obj);
 }
 
-module.exports = function(hash, options={}) {
+module.exports = function(hash, options = {}) {
   function visit(hash, prefix) {
     var nestedPairs = [];
     var simplePairs = [];
 
-    var indentStr = "";
+    var indentStr = '';
 
     forEach(keys(hash).sort(), function(key) {
       var value = hash[key];
@@ -25,7 +25,7 @@ module.exports = function(hash, options={}) {
 
     if (!(isEmpty(prefix) || isEmpty(simplePairs))) {
       toml += '[' + prefix + ']\n';
-      indentStr = "".padStart(options.indent, " ");
+      indentStr = ''.padStart(options.indent, ' ');
     }
 
     forEach(simplePairs, function(array) {

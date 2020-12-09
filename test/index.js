@@ -54,7 +54,7 @@ test('pretty', function(t) {
   t.plan(1);
 
   var hash = { nested: { hash: { deep: true } } };
-  var toml = '[nested.hash]\n  deep = true'
+  var toml = '[nested.hash]\n  deep = true';
 
-  t.equal(json2toml(hash, {indent: 2, newlineAfterSection: true}).trim(), toml);
+  t.equal(json2toml(hash, { indent: 2, newlineAfterSection: true }).trim(), toml);
 });
