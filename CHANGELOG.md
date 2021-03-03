@@ -1,3 +1,10 @@
+## [2.1.0](https://github.com/KenanY/json2toml/compare/2.0.2...2.1.0) (2021-03-03)
+
+
+### Features
+
+* add pretty-printing options ([786a664](https://github.com/KenanY/json2toml/commit/786a66458eb5fcb76671735fe6334fd3732d574c))
+
 ### [2.0.2](https://github.com/KenanY/json2toml/compare/2.0.1...2.0.2) (2020-10-16)
 
 
