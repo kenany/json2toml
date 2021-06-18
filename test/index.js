@@ -50,6 +50,44 @@ test('nested', function(t) {
   t.equal(json2toml(hash), toml);
 });
 
+test('nested array of tables', function(t) {
+  t.plan(2);
+
+  var hash = { nested: [{ a: 'one' }, { a: 'two' }] };
+  var toml = '[[nested]]\n'
+             + 'a = "one"\n'
+             + '[[nested]]\n'
+             + 'a = "two"\n';
+  t.equal(json2toml(hash), toml);
+
+  hash.other = {};
+  hash.other.nest = [{ a: 'one' }, { a: 'two' }];
+  toml = toml + '[[other.nest]]\n'
+          + 'a = "one"\n'
+          + '[[other.nest]]\n'
+          + 'a = "two"\n';
+  t.equal(json2toml(hash), toml);
+});
+
+test('nested array of tables with new line', function(t) {
+  t.plan(2);
+
+  var hash = { nested: [{ a: 'one' }, { a: 'two' }] };
+  var toml = '[[nested]]\n'
+             + 'a = "one"\n\n'
+             + '[[nested]]\n'
+             + 'a = "two"\n\n';
+  t.equal(json2toml(hash, { newlineAfterSection: true }), toml);
+
+  hash.other = {};
+  hash.other.nest = [{ a: 'one' }, { a: 'two' }];
+  toml = toml + '[[other.nest]]\n'
+          + 'a = "one"\n\n'
+          + '[[other.nest]]\n'
+          + 'a = "two"\n\n';
+  t.equal(json2toml(hash, { newlineAfterSection: true }), toml);
+});
+
 test('pretty', function(t) {
   t.plan(1);
 
