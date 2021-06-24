@@ -1,3 +1,10 @@
+## [2.2.0](https://github.com/KenanY/json2toml/compare/2.1.0...2.2.0) (2021-06-24)
+
+
+### Features
+
+* add support for array of tables ([ddd3a70](https://github.com/KenanY/json2toml/commit/ddd3a702bef4278e43001091169045782919ad4a))
+
 ## [2.1.0](https://github.com/KenanY/json2toml/compare/2.0.2...2.1.0) (2021-03-03)
 
 
