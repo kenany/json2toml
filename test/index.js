@@ -50,6 +50,15 @@ test('nested', function(t) {
   t.equal(json2toml(hash), toml);
 });
 
+test('mixed array', function(t) {
+  t.plan(1);
+  console.log(json2toml({"foo": [{"bar": false}, 9, true]}))
+  var hash = { nested: [{ a: 'one' }, 1, true, 'string'] };
+  var toml = 'nested = [{"a":"one"},1,true,"string"]\n';
+
+  t.equal(json2toml(hash), toml);
+});
+
 test('nested array of tables', function(t) {
   t.plan(2);
 

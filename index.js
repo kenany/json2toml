@@ -12,14 +12,19 @@ function format(obj) {
 }
 
 function isArrayOfTables(simplePairs) {
-  return simplePairs.some(function(array) {
-    var value = array[1];
-    return Array.isArray(value) && isPlainObject(value[0]);
+  return simplePairs.some(function(simplePairArray) {
+    return Array.isArray(simplePairArray[1]) && isPlainObject(simplePairArray[1][0]);
+  });
+}
+
+function isArrayOfObjects(array) {
+  return Array.isArray(array) && array.every(function(element) {
+    return isPlainObject(element);
   });
 }
 
 function isObjectArrayOfTables(obj) {
-  return Array.isArray(obj) && obj.length === 2 && isPlainObject(obj[1][0]);
+  return Array.isArray(obj) && obj.length === 2 && isArrayOfObjects(obj[1]);
 }
 
 function isLastObjectArrayOfTables(simplePairs) {
