@@ -5,12 +5,20 @@ var isPlainObject = require('lodash.isplainobject');
 var keys = require('lodash.keys');
 var strftime = require('strftime');
 
+/**
+ * @param {unknown} obj
+ * @returns {string}
+ */
 function format(obj) {
   return isDate(obj)
     ? strftime('%FT%TZ', obj)
     : JSON.stringify(obj);
 }
 
+/**
+ * @param {readonly unknown[][]} simplePairs
+ * @returns {boolean}
+ */
 function isArrayOfTables(simplePairs) {
   return simplePairs.some(function(array) {
     var value = array[1];
@@ -18,16 +26,44 @@ function isArrayOfTables(simplePairs) {
   });
 }
 
+/**
+ * @param {readonly unknown[]} obj
+ * @returns {boolean}
+ */
 function isObjectArrayOfTables(obj) {
   return Array.isArray(obj) && obj.length === 2 && isPlainObject(obj[1][0]);
 }
 
+/**
+ * @param {readonly unknown[][]} simplePairs
+ * @returns {boolean}
+ */
 function isLastObjectArrayOfTables(simplePairs) {
   var array = simplePairs[simplePairs.length - 1];
   return isObjectArrayOfTables(array);
 }
 
+/**
+ * @param {string} key
+ * @returns {string}
+ */
+function escapeKey(key) {
+  return /^[a-zA-Z0-9-_]*$/.test(key)
+    ? key
+    : `"${key}"`;
+}
+
+/**
+ * @param {object} hash
+ * @param {object} options
+ * @returns {string}
+ */
 module.exports = function(hash, options = {}) {
+  /**
+   * @param {object} hash
+   * @param {string} prefix
+   * @returns {void}
+   */
   function visit(hash, prefix) {
     var nestedPairs = [];
     var simplePairs = [];
@@ -67,7 +103,7 @@ module.exports = function(hash, options = {}) {
         });
       }
       else {
-        toml += indentStr + key + ' = ' + format(value) + '\n';
+        toml += indentStr + escapeKey(key) + ' = ' + format(value) + '\n';
       }
     });
 
@@ -80,7 +116,12 @@ module.exports = function(hash, options = {}) {
       var key = array[0];
       var value = array[1];
 
-      visit(value, isEmpty(prefix) ? key.toString() : [prefix, key].join('.'));
+      visit(
+        value,
+        isEmpty(prefix)
+          ? escapeKey(key.toString())
+          : `${prefix}.${escapeKey(key.toString())}`
+      );
     });
   }
 
