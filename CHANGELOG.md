@@ -1,3 +1,10 @@
+### [2.2.1](https://github.com/KenanY/json2toml/compare/2.2.0...2.2.1) (2021-09-06)
+
+
+### Bug Fixes
+
+* escape keys ([faddd7e](https://github.com/KenanY/json2toml/commit/faddd7e1ba56470953d5ee485c3262658fd3e520))
+
 ## [2.2.0](https://github.com/KenanY/json2toml/compare/2.1.0...2.2.0) (2021-06-24)
 
 
