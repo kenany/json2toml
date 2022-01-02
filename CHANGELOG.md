@@ -1,3 +1,10 @@
+### [3.0.1](https://github.com/KenanY/json2toml/compare/3.0.0...3.0.1) (2022-01-02)
+
+
+### Bug Fixes
+
+* **deps:** strftime@0.10.1 ([b002831](https://github.com/KenanY/json2toml/commit/b002831159e8ee23d7b1a54eb5e23cee5e96ad8a))
+
 ## [3.0.0](https://github.com/KenanY/json2toml/compare/2.2.1...3.0.0) (2022-01-02)
 
 
