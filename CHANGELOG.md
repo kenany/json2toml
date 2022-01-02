@@ -1,3 +1,14 @@
+## [3.0.0](https://github.com/KenanY/json2toml/compare/2.2.1...3.0.0) (2022-01-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ci:** Node.js v10 is no longer supported.
+
+### Features
+
+* **ci:** drop Node.js v10 support ([ba093d1](https://github.com/KenanY/json2toml/commit/ba093d1a7aaa7edacdd608db16ac9b1abb705fad))
+
 ### [2.2.1](https://github.com/KenanY/json2toml/compare/2.2.0...2.2.1) (2021-09-06)
 
 
