@@ -8,7 +8,7 @@
   ],
   "repository": "KenanY/json2toml",
   "license": "MIT",
-  "author": "Kenan Yildirim <kenan@kenany.me> (http://kenany.me/)",
+  "author": "Kenan Yildirim <kenan@kenany.me> (https://kenany.me/)",
   "main": "index.js",
   "files": [
     "index.js",
@@ -18,7 +18,7 @@
     "test": "test"
   },
   "engines": {
-    "node": "10 || 12 || 14 || >=16"
+    "node": "12 || 14 || >=16"
   },
   "scripts": {
     "lint": "eslint .",
@@ -35,7 +35,6 @@
   },
   "devDependencies": {
     "@kenan/eslint-config": "^9.0.4",
-    "@kenan/renovate-config": "^1.5.1",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/git": "^10.0.1",
     "conventional-changelog-conventionalcommits": "^4.6.1",

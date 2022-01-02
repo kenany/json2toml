@@ -1,5 +1,7 @@
-var test = require('tape');
-var json2toml = require('../');
+'use strict';
+
+const test = require('tape');
+const json2toml = require('../');
 
 test('empty', function(t) {
   t.plan(1);
@@ -7,7 +9,7 @@ test('empty', function(t) {
 });
 
 test('types', function(t) {
-  var TESTS = [
+  const TESTS = [
     [{ simple: true }, 'simple = true\n'],
     [{ float: -13.24 }, 'float = -13.24\n'],
     [{ int: 1234 }, 'int = 1234\n'],
@@ -33,7 +35,7 @@ test('types', function(t) {
 test('nested', function(t) {
   t.plan(3);
 
-  var hash = { nested: { hash: { deep: true } } };
+  const hash = { nested: { hash: { deep: true } } };
   t.equal(json2toml(hash), '[nested.hash]\ndeep = true\n');
 
   hash.nested.other = 12;
@@ -41,7 +43,7 @@ test('nested', function(t) {
 
   hash.nested.nest = {};
   hash.nested.nest.again = 'it never ends';
-  var toml = '[nested]\n'
+  const toml = '[nested]\n'
              + 'other = 12\n'
              + '[nested.hash]\n'
              + 'deep = true\n'
@@ -53,8 +55,8 @@ test('nested', function(t) {
 test('nested array of tables', function(t) {
   t.plan(2);
 
-  var hash = { nested: [{ a: 'one' }, { a: 'two' }] };
-  var toml = '[[nested]]\n'
+  const hash = { nested: [{ a: 'one' }, { a: 'two' }] };
+  let toml = '[[nested]]\n'
              + 'a = "one"\n'
              + '[[nested]]\n'
              + 'a = "two"\n';
@@ -72,8 +74,8 @@ test('nested array of tables', function(t) {
 test('nested array of tables with new line', function(t) {
   t.plan(2);
 
-  var hash = { nested: [{ a: 'one' }, { a: 'two' }] };
-  var toml = '[[nested]]\n'
+  const hash = { nested: [{ a: 'one' }, { a: 'two' }] };
+  let toml = '[[nested]]\n'
              + 'a = "one"\n\n'
              + '[[nested]]\n'
              + 'a = "two"\n\n';
@@ -91,8 +93,8 @@ test('nested array of tables with new line', function(t) {
 test('pretty', function(t) {
   t.plan(1);
 
-  var hash = { nested: { hash: { deep: true } } };
-  var toml = '[nested.hash]\n  deep = true';
+  const hash = { nested: { hash: { deep: true } } };
+  const toml = '[nested.hash]\n  deep = true';
 
   t.equal(
     json2toml(hash, { indent: 2, newlineAfterSection: true }).trim(),
