@@ -31,7 +31,7 @@
     "lodash.isempty": "^4.4.0",
     "lodash.isplainobject": "^4.0.6",
     "lodash.keys": "^4.2.0",
-    "strftime": "^0.10.0"
+    "strftime": "^0.10.1"
   },
   "devDependencies": {
     "@kenan/eslint-config": "^9.0.4",
