@@ -1,9 +1,9 @@
-var forEach = require('lodash.foreach');
-var isDate = require('lodash.isdate');
-var isEmpty = require('lodash.isempty');
-var isPlainObject = require('lodash.isplainobject');
-var keys = require('lodash.keys');
-var strftime = require('strftime');
+'use strict';
+
+const isDate = require('lodash.isdate');
+const isEmpty = require('lodash.isempty');
+const isPlainObject = require('lodash.isplainobject');
+const strftime = require('strftime');
 
 /**
  * @param {unknown} obj
@@ -21,7 +21,7 @@ function format(obj) {
  */
 function isArrayOfTables(simplePairs) {
   return simplePairs.some(function(array) {
-    var value = array[1];
+    const value = array[1];
     return Array.isArray(value) && isPlainObject(value[0]);
   });
 }
@@ -39,7 +39,7 @@ function isObjectArrayOfTables(obj) {
  * @returns {boolean}
  */
 function isLastObjectArrayOfTables(simplePairs) {
-  var array = simplePairs[simplePairs.length - 1];
+  const array = simplePairs[simplePairs.length - 1];
   return isObjectArrayOfTables(array);
 }
 
@@ -65,13 +65,13 @@ module.exports = function(hash, options = {}) {
    * @returns {void}
    */
   function visit(hash, prefix) {
-    var nestedPairs = [];
-    var simplePairs = [];
+    const nestedPairs = [];
+    const simplePairs = [];
 
-    var indentStr = '';
+    let indentStr = '';
 
-    forEach(keys(hash).sort(), function(key) {
-      var value = hash[key];
+    Object.keys(hash).sort().forEach((key) => {
+      const value = hash[key];
       (isPlainObject(value) ? nestedPairs : simplePairs).push([key, value]);
     });
 
@@ -81,18 +81,18 @@ module.exports = function(hash, options = {}) {
       indentStr = ''.padStart(options.indent, ' ');
     }
 
-    forEach(simplePairs, function(array) {
-      var key = array[0];
-      var value = array[1];
+    simplePairs.forEach((array) => {
+      const key = array[0];
+      const value = array[1];
 
       if (isObjectArrayOfTables(array)) {
         if (simplePairs.indexOf(array) > 0 && options.newlineAfterSection) {
-          var lastObj = simplePairs[simplePairs.indexOf(array) - 1];
+          const lastObj = simplePairs[simplePairs.indexOf(array) - 1];
           if (!isObjectArrayOfTables(lastObj)) {
             toml += '\n';
           }
         }
-        forEach(value, function(obj) {
+        value.forEach((obj) => {
           if (!isEmpty(prefix)) {
             toml += '[[' + prefix + '.' + key + ']]\n';
           }
@@ -112,9 +112,9 @@ module.exports = function(hash, options = {}) {
       toml += '\n';
     }
 
-    forEach(nestedPairs, function(array) {
-      var key = array[0];
-      var value = array[1];
+    nestedPairs.forEach((array) => {
+      const key = array[0];
+      const value = array[1];
 
       visit(
         value,
@@ -125,7 +125,7 @@ module.exports = function(hash, options = {}) {
     });
   }
 
-  var toml = '';
+  let toml = '';
 
   visit(hash, '');
 
