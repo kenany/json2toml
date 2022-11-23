@@ -1,3 +1,14 @@
+## [4.0.0](https://github.com/KenanY/json2toml/compare/3.0.1...4.0.0) (2022-11-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* Node.js v12 is no longer supported.
+
+### Features
+
+* drop Node.js v12 support ([5d956eb](https://github.com/KenanY/json2toml/commit/5d956ebe6be013df41d50290ac385c7fae3a747e))
+
 ### [3.0.1](https://github.com/KenanY/json2toml/compare/3.0.0...3.0.1) (2022-01-02)
 
 
