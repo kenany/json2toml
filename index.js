@@ -67,8 +67,7 @@ module.exports = function(hash, options = {}) {
   function visit(hash, prefix) {
     const nestedPairs = [];
     const simplePairs = [];
-
-    let indentStr = '';
+    const indentStr = ''.padStart(options.indent, ' ');
 
     Object.keys(hash).sort().forEach((key) => {
       const value = hash[key];
@@ -78,7 +77,6 @@ module.exports = function(hash, options = {}) {
     if (!isEmpty(prefix) && !isEmpty(simplePairs)
       && !isArrayOfTables(simplePairs)) {
       toml += '[' + prefix + ']\n';
-      indentStr = ''.padStart(options.indent, ' ');
     }
 
     simplePairs.forEach((array) => {
