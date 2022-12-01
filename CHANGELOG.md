@@ -1,3 +1,10 @@
+## [4.0.1](https://github.com/KenanY/json2toml/compare/4.0.0...4.0.1) (2022-12-01)
+
+
+### Bug Fixes
+
+* **indent:** indent on arrays of objects ([8c71aae](https://github.com/KenanY/json2toml/commit/8c71aae6a25aed0816230cfdb76fb80a5f351a5e)), closes [#159](https://github.com/KenanY/json2toml/issues/159)
+
 ## [4.0.0](https://github.com/KenanY/json2toml/compare/3.0.1...4.0.0) (2022-11-23)
 
 
