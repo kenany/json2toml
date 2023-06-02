@@ -1,0 +1,7 @@
+{
+  "name": "firefox",
+  "icon": {
+    "64": "/path/to/64.png",
+    "128": "/path/to/128.png"
+  }
+}

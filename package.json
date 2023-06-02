@@ -23,7 +23,7 @@
   "scripts": {
     "lint": "eslint .",
     "release": "semantic-release",
-    "test": "nyc --reporter html --reporter text tape test/index.js"
+    "test": "nyc --reporter html --reporter text tape test/*.js"
   },
   "dependencies": {
     "lodash.isdate": "^4.0.1",

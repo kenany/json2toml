@@ -69,7 +69,7 @@ module.exports = function(hash, options = {}) {
     const simplePairs = [];
     const indentStr = ''.padStart(options.indent, ' ');
 
-    Object.keys(hash).sort().forEach((key) => {
+    Object.keys(hash).forEach((key) => {
       const value = hash[key];
       (isPlainObject(value) ? nestedPairs : simplePairs).push([key, value]);
     });

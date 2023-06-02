@@ -36,3 +36,47 @@ M = "latin letter M"
 `
   );
 });
+
+test('key > escapes', (t) => {
+  t.plan(6);
+
+  t.equal(
+    json2toml({ '\n': 'newline' }),
+    '"\n" = "newline"\n'
+  );
+  t.equal(
+    json2toml({ '"': 'just a quote' }),
+    '""" = "just a quote"\n'
+  );
+  t.equal(
+    json2toml({ '"quoted"': { quote: true } }),
+    `[""quoted""]
+quote = true
+`
+  );
+  t.equal(
+    json2toml({ 'a.b': { À: { c: 'c' } } }),
+    `["a.b"."\u00c0"]
+c = "c"
+`
+  );
+  t.equal(
+    json2toml({ 'backsp\u0008\u0008': { c: 'c' } }),
+    `["backsp\b\b"]
+c = "c"
+`
+  );
+  t.equal(
+    json2toml({ À: 'latin capital letter A with grave' }),
+    '"À" = "latin capital letter A with grave"\n'
+  );
+});
+
+test('key > space', (t) => {
+  t.plan(1);
+
+  t.equal(
+    json2toml({ 'a b': 1 }),
+    '"a b" = 1\n'
+  );
+});
