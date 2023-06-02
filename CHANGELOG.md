@@ -1,3 +1,10 @@
+## [4.0.2](https://github.com/KenanY/json2toml/compare/4.0.1...4.0.2) (2023-06-02)
+
+
+### Bug Fixes
+
+* **deps:** strftime@0.10.2 ([1bea457](https://github.com/KenanY/json2toml/commit/1bea457c88813bd33e0c819280465029a06395bb))
+
 ## [4.0.1](https://github.com/KenanY/json2toml/compare/4.0.0...4.0.1) (2022-12-01)
 
 
