@@ -6,7 +6,7 @@
     "json",
     "toml"
   ],
-  "repository": "KenanY/json2toml",
+  "repository": "kenany/json2toml",
   "license": "MIT",
   "author": "Kenan Yildirim <kenan@kenany.me> (https://kenany.me/)",
   "main": "index.js",
@@ -18,7 +18,7 @@
     "test": "test"
   },
   "engines": {
-    "node": "14 || 16 || >=18"
+    "node": "14 || 16 || 18 || >=20"
   },
   "scripts": {
     "lint": "eslint .",
