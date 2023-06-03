@@ -71,6 +71,22 @@ module.exports = function(hash, options = {}) {
 
     Object.keys(hash).forEach((key) => {
       const value = hash[key];
+
+      if (value === undefined) {
+        throw new TypeError(`Cannot convert \`undefined\` at key "${key}" to TOML.`);
+      }
+
+      if (value === null) {
+        throw new TypeError(`Cannot convert \`null\` at key "${key}" to TOML.`);
+      }
+
+      if (
+        Array.isArray(value)
+        && value.length > value.filter(() => true).length
+      ) {
+        throw new TypeError(`Cannot convert sparse array at key "${key}" to TOML.`);
+      }
+
       (isPlainObject(value) ? nestedPairs : simplePairs).push([key, value]);
     });
 
