@@ -1,3 +1,20 @@
+## [5.0.0](https://github.com/kenany/json2toml/compare/4.0.2...5.0.0) (2023-06-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* Node.js v14 is no longer supported.
+
+### Features
+
+* drop Node.js v14 support ([54fe19a](https://github.com/kenany/json2toml/commit/54fe19a45f852971a946112519362c31c9891381))
+
+
+### Bug Fixes
+
+* preserve item sort order ([e2305e7](https://github.com/kenany/json2toml/commit/e2305e7443d6a9405dfb10f70327adb1de84077d))
+* throw on `undefined`, `null`, and sparse arrays ([21c9125](https://github.com/kenany/json2toml/commit/21c9125f0b9464911125211c9d89934abf54d8ff))
+
 ## [4.0.2](https://github.com/KenanY/json2toml/compare/4.0.1...4.0.2) (2023-06-02)
 
 
