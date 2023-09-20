@@ -1,11 +1,13 @@
-name: nodejs
+name: Build
 on: [pull_request, push]
+permissions:
+  contents: read
 jobs:
   build:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node-version: [16, 18, 20]
+        node-version: [18, 20]
         os: [ubuntu-latest]
     steps:
     - uses: actions/checkout@v3.6.0
