@@ -1,3 +1,14 @@
+## [6.0.0](https://github.com/kenany/json2toml/compare/5.0.0...6.0.0) (2023-09-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* Node.js v16 is no longer supported.
+
+### Features
+
+* drop Node.js v16 ([e6f1c40](https://github.com/kenany/json2toml/commit/e6f1c409f0f052fc66cb9d724361bb99bd195343))
+
 ## [5.0.0](https://github.com/kenany/json2toml/compare/4.0.2...5.0.0) (2023-06-03)
 
 
