@@ -26,3 +26,4 @@ jobs:
     - run: npm ls
     - run: npm test
     - run: npm run lint
+    - run: npm run type-coverage
