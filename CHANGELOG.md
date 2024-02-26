@@ -1,3 +1,10 @@
+## [6.1.0](https://github.com/kenany/json2toml/compare/6.0.0...6.1.0) (2024-02-26)
+
+
+### Features
+
+* add TS declaration file ([da04ce2](https://github.com/kenany/json2toml/commit/da04ce2b94083e1c96d04f89b6934cb81e942703))
+
 ## [6.0.0](https://github.com/kenany/json2toml/compare/5.0.0...6.0.0) (2023-09-20)
 
 
