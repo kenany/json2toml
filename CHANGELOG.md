@@ -1,3 +1,9 @@
+## [6.1.1](https://github.com/kenany/json2toml/compare/6.1.0...6.1.1) (2024-06-27)
+
+### Bug Fixes
+
+* **deps:** strftime@0.10.3 ([fe8e1f5](https://github.com/kenany/json2toml/commit/fe8e1f5ec72fc715ef85347515110fdbc2cf04fb))
+
 ## [6.1.0](https://github.com/kenany/json2toml/compare/6.0.0...6.1.0) (2024-02-26)
 
 
