@@ -12,14 +12,14 @@ test('key > case sensitive', (t) => {
     section: {
       name: 'lower',
       NAME: 'upper',
-      Name: 'capitalized'
+      Name: 'capitalized',
     },
     Section: {
       name: 'different section!!',
       μ: 'greek small letter mu',
       Μ: 'greek capital letter MU',
-      M: 'latin letter M'
-    }
+      M: 'latin letter M',
+    },
   };
   t.equal(
     json2toml(obj),
@@ -40,14 +40,8 @@ M = "latin letter M"
 test('key > escapes', (t) => {
   t.plan(6);
 
-  t.equal(
-    json2toml({ '\n': 'newline' }),
-    '"\n" = "newline"\n'
-  );
-  t.equal(
-    json2toml({ '"': 'just a quote' }),
-    '""" = "just a quote"\n'
-  );
+  t.equal(json2toml({ '\n': 'newline' }), '"\n" = "newline"\n');
+  t.equal(json2toml({ '"': 'just a quote' }), '""" = "just a quote"\n');
   t.equal(
     json2toml({ '"quoted"': { quote: true } }),
     `[""quoted""]
@@ -75,8 +69,5 @@ c = "c"
 test('key > space', (t) => {
   t.plan(1);
 
-  t.equal(
-    json2toml({ 'a b': 1 }),
-    '"a b" = 1\n'
-  );
+  t.equal(json2toml({ 'a b': 1 }), '"a b" = 1\n');
 });

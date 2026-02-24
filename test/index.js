@@ -3,12 +3,12 @@
 const test = require('tape');
 const json2toml = require('../');
 
-test('empty', function(t) {
+test('empty', (t) => {
   t.plan(1);
   t.equal(json2toml({}), '');
 });
 
-test('types', function(t) {
+test('types', (t) => {
   const TESTS = [
     [{ simple: true }, 'simple = true\n'],
     [{ float: -13.24 }, 'float = -13.24\n'],
@@ -17,80 +17,90 @@ test('types', function(t) {
     [{ false: false }, 'false = false\n'],
     [{ array: [1, 2, 3] }, 'array = [1,2,3]\n'],
     [
-      { array: [[1, 2], ['weird', 'one']] },
-      'array = [[1,2],["weird","one"]]\n'
+      {
+        array: [
+          [1, 2],
+          ['weird', 'one'],
+        ],
+      },
+      'array = [[1,2],["weird","one"]]\n',
     ],
-    [{
-      datetime: new Date(1986, 7, 28, 15, 15)
-    }, 'datetime = 1986-08-28T15:15:00Z\n']
+    [
+      {
+        datetime: new Date(1986, 7, 28, 15, 15),
+      },
+      'datetime = 1986-08-28T15:15:00Z\n',
+    ],
   ];
 
   t.plan(TESTS.length);
 
-  TESTS.forEach(function(value) {
+  for (const value of TESTS) {
     t.equal(json2toml(value[0]), value[1]);
-  });
+  }
 });
 
-test('nested', function(t) {
+test('nested', (t) => {
   t.plan(3);
 
   const hash = { nested: { hash: { deep: true } } };
   t.equal(json2toml(hash), '[nested.hash]\ndeep = true\n');
 
   hash.nested.other = 12;
-  t.equal(json2toml(hash), '[nested]\nother = 12\n[nested.hash]\ndeep = true\n');
+  t.equal(
+    json2toml(hash),
+    '[nested]\nother = 12\n[nested.hash]\ndeep = true\n'
+  );
 
   hash.nested.nest = {};
   hash.nested.nest.again = 'it never ends';
-  const toml = '[nested]\n'
-             + 'other = 12\n'
-             + '[nested.hash]\n'
-             + 'deep = true\n'
-             + '[nested.nest]\n'
-             + 'again = "it never ends"\n';
+  const toml =
+    '[nested]\n' +
+    'other = 12\n' +
+    '[nested.hash]\n' +
+    'deep = true\n' +
+    '[nested.nest]\n' +
+    'again = "it never ends"\n';
   t.equal(json2toml(hash), toml);
 });
 
-test('nested array of tables', function(t) {
+test('nested array of tables', (t) => {
   t.plan(2);
 
   const hash = { nested: [{ a: 'one' }, { a: 'two' }] };
-  let toml = '[[nested]]\n'
-             + 'a = "one"\n'
-             + '[[nested]]\n'
-             + 'a = "two"\n';
+  let toml = '[[nested]]\na = "one"\n[[nested]]\na = "two"\n';
   t.equal(json2toml(hash), toml);
 
   hash.other = {};
   hash.other.nest = [{ a: 'one' }, { a: 'two' }];
-  toml = toml + '[[other.nest]]\n'
-          + 'a = "one"\n'
-          + '[[other.nest]]\n'
-          + 'a = "two"\n';
+  toml =
+    toml +
+    '[[other.nest]]\n' +
+    'a = "one"\n' +
+    '[[other.nest]]\n' +
+    'a = "two"\n';
   t.equal(json2toml(hash), toml);
 });
 
-test('nested array of tables with new line', function(t) {
+test('nested array of tables with new line', (t) => {
   t.plan(2);
 
   const hash = { nested: [{ a: 'one' }, { a: 'two' }] };
-  let toml = '[[nested]]\n'
-             + 'a = "one"\n\n'
-             + '[[nested]]\n'
-             + 'a = "two"\n\n';
+  let toml = '[[nested]]\na = "one"\n\n[[nested]]\na = "two"\n\n';
   t.equal(json2toml(hash, { newlineAfterSection: true }), toml);
 
   hash.other = {};
   hash.other.nest = [{ a: 'one' }, { a: 'two' }];
-  toml = toml + '[[other.nest]]\n'
-          + 'a = "one"\n\n'
-          + '[[other.nest]]\n'
-          + 'a = "two"\n\n';
+  toml =
+    toml +
+    '[[other.nest]]\n' +
+    'a = "one"\n\n' +
+    '[[other.nest]]\n' +
+    'a = "two"\n\n';
   t.equal(json2toml(hash, { newlineAfterSection: true }), toml);
 });
 
-test('pretty', function(t) {
+test('pretty', (t) => {
   t.plan(1);
 
   const hash = { nested: { hash: { deep: true } } };
