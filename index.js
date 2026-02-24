@@ -17,9 +17,7 @@ const strftime = require('strftime');
  * @returns {string}
  */
 function format(obj) {
-  return isDate(obj)
-    ? strftime('%FT%TZ', obj)
-    : JSON.stringify(obj);
+  return isDate(obj) ? strftime('%FT%TZ', obj) : JSON.stringify(obj);
 }
 
 /**
@@ -27,7 +25,7 @@ function format(obj) {
  * @returns {boolean}
  */
 function isArrayOfTables(simplePairs) {
-  return simplePairs.some(function(array) {
+  return simplePairs.some((array) => {
     const value = array[1];
     return Array.isArray(value) && isPlainObject(value[0]);
   });
@@ -46,8 +44,8 @@ function isObjectArrayOfTables(obj) {
  * @returns {boolean}
  */
 function isLastObjectArrayOfTables(simplePairs) {
-  const array = simplePairs[simplePairs.length - 1];
-  return isObjectArrayOfTables(array);
+  const array = simplePairs.at(-1);
+  return array !== undefined && isObjectArrayOfTables(array);
 }
 
 /**
@@ -55,9 +53,7 @@ function isLastObjectArrayOfTables(simplePairs) {
  * @returns {string}
  */
 function escapeKey(key) {
-  return /^[a-zA-Z0-9-_]*$/.test(key)
-    ? key
-    : `"${key}"`;
+  return /^[a-zA-Z0-9-_]*$/.test(key) ? key : `"${key}"`;
 }
 
 /**
@@ -65,7 +61,7 @@ function escapeKey(key) {
  * @param {Options} options
  * @returns {string}
  */
-module.exports = function(hash, options = {}) {
+module.exports = (hash, options = {}) => {
   /**
    * @param {object} hash
    * @param {string} prefix
@@ -79,12 +75,14 @@ module.exports = function(hash, options = {}) {
     const simplePairs = [];
     const indentStr = ''.padStart(options.indent || 0, ' ');
 
-    Object.keys(hash).forEach((key) => {
+    for (const key of Object.keys(hash)) {
       // @ts-expect-error
       const value = hash[key];
 
       if (value === undefined) {
-        throw new TypeError(`Cannot convert \`undefined\` at key "${key}" to TOML.`);
+        throw new TypeError(
+          `Cannot convert \`undefined\` at key "${key}" to TOML.`
+        );
       }
 
       if (value === null) {
@@ -92,21 +90,24 @@ module.exports = function(hash, options = {}) {
       }
 
       if (
-        Array.isArray(value)
-        && value.length > value.filter(() => true).length
+        Array.isArray(value) &&
+        value.length > value.filter(() => true).length
       ) {
-        throw new TypeError(`Cannot convert sparse array at key "${key}" to TOML.`);
+        throw new TypeError(
+          `Cannot convert sparse array at key "${key}" to TOML.`
+        );
       }
 
       (isPlainObject(value) ? nestedPairs : simplePairs).push([key, value]);
-    });
-
-    if (!isEmpty(prefix) && !isEmpty(simplePairs)
-      && !isArrayOfTables(simplePairs)) {
-      toml += '[' + prefix + ']\n';
     }
 
-    simplePairs.forEach((array) => {
+    if (
+      !(isEmpty(prefix) || isEmpty(simplePairs) || isArrayOfTables(simplePairs))
+    ) {
+      toml += `[${prefix}]\n`;
+    }
+
+    for (const array of simplePairs) {
       const key = array[0];
       const value = array[1];
 
@@ -119,27 +120,27 @@ module.exports = function(hash, options = {}) {
         }
 
         // @ts-expect-error Asserted to be an array at this point.
-        value.forEach((obj) => {
-          if (!isEmpty(prefix)) {
-            toml += '[[' + prefix + '.' + key + ']]\n';
-          }
-          else {
-            toml += '[[' + key + ']]\n';
+        for (const obj of value) {
+          if (isEmpty(prefix)) {
+            toml += `[[${key}]]\n`;
+          } else {
+            toml += `[[${prefix}.${key}]]\n`;
           }
           visit(obj, '');
-        });
+        }
+      } else {
+        toml += `${indentStr}${escapeKey(key)} = ${format(value)}\n`;
       }
-      else {
-        toml += indentStr + escapeKey(key) + ' = ' + format(value) + '\n';
-      }
-    });
+    }
 
-    if (!isEmpty(simplePairs) && !isLastObjectArrayOfTables(simplePairs)
-      && options.newlineAfterSection) {
+    if (
+      !(isEmpty(simplePairs) || isLastObjectArrayOfTables(simplePairs)) &&
+      options.newlineAfterSection
+    ) {
       toml += '\n';
     }
 
-    nestedPairs.forEach((array) => {
+    for (const array of nestedPairs) {
       const key = array[0];
       const value = array[1];
 
@@ -149,7 +150,7 @@ module.exports = function(hash, options = {}) {
           ? escapeKey(key.toString())
           : `${prefix}.${escapeKey(key.toString())}`
       );
-    });
+    }
   }
 
   let toml = '';

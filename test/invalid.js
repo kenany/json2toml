@@ -23,8 +23,8 @@ test('invalid > null', (t) => {
 test('invalid > sparse array', (t) => {
   t.plan(1);
   t.throws(
-    // eslint-disable-next-line no-sparse-arrays
-    () => json2toml({ a: [,,] }),
+    // biome-ignore lint/suspicious/noSparseArray: Intentional.
+    () => json2toml({ a: [, ,] }),
     /Cannot convert sparse array at key "a" to TOML./
   );
 });

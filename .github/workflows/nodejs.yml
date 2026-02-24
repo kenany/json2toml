@@ -1,29 +1,45 @@
 name: Build
-on: [pull_request, push]
+
+on:
+  push:
+    branches:
+      - master
+
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+
+  merge_group:
+
+  workflow_dispatch:
+
 permissions:
   contents: read
+
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
-        node-version: [18, 20]
-        os: [ubuntu-latest]
+        node-version: [18, 20, 22, 24]
     steps:
-    - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-    - name: Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@6044e13b5dc448c55e2357c09f80417699197238 # v6.2.0
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: Update npm
-      run: |
-        npm install -g npm
-        npm --version
-    - name: Install dependencies
-      uses: bahmutov/npm-install@3e063b974f0d209807684aa23e534b3dde517fd9 # v1.11.2
-      with:
-        useLockFile: false
-    - run: npm ls
-    - run: npm test
-    - run: npm run lint
-    - run: npm run type-coverage
+      - name: Checkout code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - run: corepack enable
+
+      - name: Setup Node.js
+        uses: actions/setup-node@6044e13b5dc448c55e2357c09f80417699197238 # v6.2.0
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - run: pnpm test
+      - run: pnpm run lint
+      - run: pnpm run type-coverage

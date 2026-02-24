@@ -13,10 +13,9 @@ test('fixtures', async (t) => {
   const files = await fs.readdir(FIXTURES_PATH);
   for (const file of files) {
     const [name, ext] = file.split('.');
-    const contents = await fs.readFile(
-      path.resolve(FIXTURES_PATH, file),
-      { encoding: 'utf8' }
-    );
+    const contents = await fs.readFile(path.resolve(FIXTURES_PATH, file), {
+      encoding: 'utf8',
+    });
 
     const fixture = fixtures.has(name)
       ? fixtures.get(name)
@@ -24,8 +23,7 @@ test('fixtures', async (t) => {
 
     if (ext === 'json') {
       fixture.json = JSON.parse(contents);
-    }
-    else if (ext === 'toml') {
+    } else if (ext === 'toml') {
       fixture.toml = contents;
     }
 
