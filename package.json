@@ -44,7 +44,7 @@
     "strftime": "^0.10.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.4",
+    "@biomejs/biome": "2.4.5",
     "@containerbase/semantic-release-pnpm": "1.3.22",
     "@kenan/biome-config": "1.0.6",
     "@tsconfig/node18": "18.2.6",
