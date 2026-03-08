@@ -53,7 +53,7 @@
     "@types/lodash.isplainobject": "4.0.9",
     "@types/strftime": "0.9.8",
     "@types/tape": "5.8.1",
-    "conventional-changelog-conventionalcommits": "9.2.0",
+    "conventional-changelog-conventionalcommits": "9.3.0",
     "nyc": "18.0.0",
     "rimraf": "6.1.3",
     "semantic-release": "25.0.3",
