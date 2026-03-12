@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.6",
-    "@containerbase/semantic-release-pnpm": "1.3.23",
+    "@containerbase/semantic-release-pnpm": "1.3.24",
     "@kenan/biome-config": "1.0.6",
     "@tsconfig/node18": "18.2.6",
     "@types/lodash.isdate": "4.0.9",
