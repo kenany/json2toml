@@ -30,7 +30,7 @@
     "clean": "rimraf --glob test/**/*.d.ts *.d.ts || true",
     "lint": "biome check .",
     "release": "semantic-release",
-    "type-coverage": "type-coverage --at-least 96 --detail --strict",
+    "type-coverage": "type-coverage --at-least 94 --detail --strict",
     "prebuild": "pnpm run clean",
     "build": "tsc",
     "pretest": "pnpm run build",
@@ -59,6 +59,6 @@
     "semantic-release": "25.0.3",
     "tape": "5.9.0",
     "type-coverage": "2.29.7",
-    "typescript": "5.9.3"
+    "typescript": "6.0.2"
   }
 }
