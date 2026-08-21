@@ -31,8 +31,8 @@ importers:
         specifier: 1.0.6
         version: 1.0.6(@biomejs/biome@2.5.9)
       '@tsconfig/node18':
-        specifier: 18.2.6
-        version: 18.2.6
+        specifier: 18.2.7
+        version: 18.2.7
       '@types/lodash.isdate':
         specifier: 4.0.9
         version: 4.0.9
@@ -380,8 +380,8 @@ packages:
     resolution: {integrity: sha512-tlqY9xq5ukxTUZBmoOp+m61cqwQD5pHJtFY3Mn8CA8ps6yghLH/Hw8UPdqg4OLmFW3IFlcXnQNmo/dh8HzXYIQ==}
     engines: {node: '>=18'}
 
-  '@tsconfig/node18@18.2.6':
-    resolution: {integrity: sha512-eAWQzAjPj18tKnDzmWstz4OyWewLUNBm9tdoN9LayzoboRktYx3Enk1ZXPmThj55L7c4VWYq/Bzq0A51znZfhw==}
+  '@tsconfig/node18@18.2.7':
+    resolution: {integrity: sha512-UyenTORreCUh8MKh2qbLGGHTRrxjBbSwvX0ZoWs6Jx1jrNS62PXEA3+VaLvmb0YDQrgGU3v3h7zB9Xs/BN1ozg==}
 
   '@types/lodash.isdate@4.0.9':
     resolution: {integrity: sha512-zgU4tWEQEkwhvIxlSc0qsu6+8FLBPa89nPJQtvym2HK6obbSF5DRDErhoW4rmZwoMQ1QbHWh9AgCqRD7vLye1w==}
@@ -2711,7 +2711,7 @@ snapshots:
 
   '@sindresorhus/merge-streams@4.0.0': {}
 
-  '@tsconfig/node18@18.2.6': {}
+  '@tsconfig/node18@18.2.7': {}
 
   '@types/lodash.isdate@4.0.9':
     dependencies:
