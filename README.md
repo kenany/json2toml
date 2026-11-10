@@ -4,10 +4,10 @@ Convert JSON to [TOML](https://github.com/mojombo/toml).
 
 ## Example
 
-``` javascript
+```javascript
 const json2toml = require('json2toml');
 
-json2toml({simple: true});
+json2toml({ simple: true });
 // => 'simple = true\n'
 
 // Also supports pretty-printing options
@@ -16,9 +16,9 @@ json2toml(
     deeply: {
       option: false,
       nested: {
-        option: true
-      }
-    }
+        option: true,
+      },
+    },
   },
   { indent: 2, newlineAfterSection: true }
 );
@@ -31,13 +31,13 @@ json2toml(
 
 ## Installation
 
-``` bash
+```bash
 $ npm install json2toml
 ```
 
 ## API
 
-``` javascript
+```javascript
 const json2toml = require('json2toml');
 ```
 
