@@ -28,8 +28,8 @@ importers:
         specifier: 1.4.4
         version: 1.4.4(semantic-release@25.0.9(supports-color@7.2.0)(typescript@6.0.3))
       '@kenan/biome-config':
-        specifier: 1.4.0
-        version: 1.4.0(@biomejs/biome@2.6.8)
+        specifier: 1.5.0
+        version: 1.5.0(@biomejs/biome@2.6.8)
       '@tsconfig/node22':
         specifier: 22.0.6
         version: 22.0.6
@@ -257,10 +257,10 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@kenan/biome-config@1.4.0':
-    resolution: {integrity: sha512-puXYW4mIZl16W8X4crZHaDL14O2/UNhinJ/tVRI9UuSD2/kwJbx7lKiyi5C/CnO5GJZPPPM45qEr7e4vV0SppQ==}
+  '@kenan/biome-config@1.5.0':
+    resolution: {integrity: sha512-+jBSXZRECKzg8Frae2TzcDkGCJhCB+myfEjVUbLPsCg/J+z6WNm7OrSAaCqFyyVcIYS8DnrvDqKtmJY78nQITw==}
     peerDependencies:
-      '@biomejs/biome': ^2.6.7
+      '@biomejs/biome': ^2.6.8
 
   '@ljharb/now@1.0.1':
     resolution: {integrity: sha512-yRQ3B8l2v4vTLQ2l+4kBu6EsXaX7czuLB7fvUz0vkHHziHje75R2t/0Mm/vIo31tlZVCEvCoXHkNKW+ugv3uSA==}
@@ -2500,7 +2500,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.3
       '@jridgewell/sourcemap-codec': 1.6.0
 
-  '@kenan/biome-config@1.4.0(@biomejs/biome@2.6.8)':
+  '@kenan/biome-config@1.5.0(@biomejs/biome@2.6.8)':
     dependencies:
       '@biomejs/biome': 2.6.8
 
